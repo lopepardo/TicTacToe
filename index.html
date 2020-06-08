@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1 class="title">Tic Tac Toe</h1>
+      <h2 class="turn">
+        Turno: <span id="turn-symbol" class="turn-symbol"></span>
+      </h2>
+      <div id="board" class="board">
+        <div id="0" class="box-1 box"><span class="select"></span></div>
+        <div id="1" class="box-2 box"><span class="select"></span></div>
+        <div id="2" class="box-3 box"><span class="select"></span></div>
+        <div id="3" class="box-4 box"><span class="select"></span></div>
+        <div id="4" class="box-5 box"><span class="select"></span></div>
+        <div id="5" class="box-6 box"><span class="select"></span></div>
+        <div id="6" class="box-7 box"><span class="select"></span></div>
+        <div id="7" class="box-8 box"><span class="select"></span></div>
+        <div id="8" class="box-9 box"><span class="select"></span></div>
+      </div>
+      <h2 class="title-score">Score:</h2>
+      <div class="score">
+        <div class="players">
+          <h2>Jugador 1:</h2>
+          <span id="playerX" class="score-player"></span>
+        </div>
+        <div class="players">
+          <h2>Jugador 2:</h2>
+          <span id="playerO" class="score-player"></span>
+        </div>
+      </div>
+    </div>
+    <script src="./js/main.js" type="module"></script>
+  </body>
+</html>
