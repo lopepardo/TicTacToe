@@ -1,0 +1,24 @@
+{
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "TicTacToe development in TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lopepardo/TicTacToe.git"
+  },
+  "author": "Luis Felipe López Pardo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lopepardo/TicTacToe/issues"
+  },
+  "homepage": "https://github.com/lopepardo/TicTacToe#readme",
+  "devDependencies": {
+    "@types/node": "^18.15.12",
+    "typescript": "^5.0.4"
+  }
+}
