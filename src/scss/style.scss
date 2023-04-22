@@ -1,0 +1,214 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap");
+
+// Color variables
+$primary-color: #1b1818;
+$primary-color-alpha: #1b1818e6;
+$secondary-color: #e6e6e6;
+$red-color: #ff0000;
+$grey-color: #262626;
+$light-grey-color: #666666;
+
+// Fonts variables
+$font-title: 3rem;
+$font-subtitle: 1.5rem;
+
+// Others variables
+$line-width: 3px;
+$width-limit: 300px;
+$margin-space: 12px;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Fredericka the Great";
+  background-color: $primary-color;
+  color: $secondary-color;
+}
+
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: $margin-space;
+  text-align: center;
+
+  &_title {
+    margin-bottom: $margin-space;
+    font-size: $font-title;
+  }
+
+  &_turn {
+    font-size: $font-subtitle;
+    margin-bottom: $margin-space;
+  }
+
+  &_symbol {
+    font-size: 2rem;
+    color: $red-color;
+  }
+
+  &_board {
+    width: $width-limit;
+    height: $width-limit;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: $margin-space;
+  }
+
+  &_score {
+    width: $width-limit;
+  }
+
+  &_score-title {
+    margin-bottom: $margin-space;
+    font-size: $font-subtitle;
+  }
+
+  &_score-display {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: $font-subtitle;
+  }
+
+  &_score-player {
+    margin-top: $margin-space;
+    display: block;
+  }
+}
+
+.toggle {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 2em;
+  align-items: center;
+  margin-bottom: $margin-space;
+
+  &_title {
+    font-size: $font-subtitle;
+  }
+
+  &_wrap {
+    cursor: pointer;
+    background: $grey-color;
+    padding: 7px;
+    width: 47px;
+    height: 30px;
+    border-radius: 15px;
+  }
+
+  &_wrap input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &_switch {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 0fr 1fr 1fr;
+    transition: 0.2s;
+  }
+
+  &_switch::after {
+    content: "";
+    border-radius: 50%;
+    background: $light-grey-color;
+    grid-column: 2;
+    transition: background 0.2s;
+  }
+
+  input:checked + &_switch {
+    grid-template-columns: 1fr 1fr 0fr;
+  }
+
+  input:checked + &_switch::after {
+    background-color: $secondary-color;
+  }
+}
+
+[class*="col"] {
+  width: 100px;
+  height: 100px;
+  border-style: solid;
+  border-color: $secondary-color;
+  border-width: 0;
+  cursor: pointer;
+  font-size: 6rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+[data-row="0"] [data-col="0"] {
+  border-right-width: $line-width;
+  border-bottom-width: $line-width;
+}
+[data-row="0"] [data-col="1"] {
+  border-right-width: $line-width;
+}
+[data-row="0"] [data-col="2"] {
+  border-top-width: $line-width;
+  border-right-width: $line-width;
+}
+
+[data-row="1"] [data-col="0"] {
+  border-bottom-width: $line-width;
+}
+[data-row="1"] [data-col="2"] {
+  border-top-width: $line-width;
+}
+
+[data-row="2"] [data-col="0"] {
+  border-left-width: $line-width;
+  border-bottom-width: $line-width;
+}
+[data-row="2"] [data-col="1"] {
+  border-left-width: $line-width;
+}
+[data-row="2"] [data-col="2"] {
+  border-top-width: $line-width;
+  border-left-width: $line-width;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $primary-color-alpha;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  text-align: center;
+  animation: fadeIn 0.5s ease forwards;
+
+  &_title {
+    color: $secondary-color;
+    font-size: 4rem;
+  }
+
+  &_subtitle {
+    color: $red-color;
+    font-size: 2rem;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
