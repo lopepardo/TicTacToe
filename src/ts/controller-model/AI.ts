@@ -3,7 +3,16 @@ import { IScoreMap } from "../interfaces/IScoreMap";
 // Constants
 import { WINNING_PATTERNS } from "../constants/constants";
 
+/**
+ * Class representing the game's AI (Artificial Intelligence)
+ */
 export class AI {
+  /**
+   * Minimax algorithm to find the best move.
+   * @param board - Game board.
+   * @param maximizingPlayer - Indicates whether the maximizing player is the AI.
+   * @returns The move with the best score.
+   */
   private minimax(
     board: Array<Array<string>>,
     maximizingPlayer: boolean
@@ -44,6 +53,11 @@ export class AI {
     return { score: scores[bestScoreIndex], move };
   }
 
+  /**
+   * Check if there is a winner in the game.
+   * @param board - Game board
+   * @returns "o" or "x" if there is a winner, "draw" if it's a tie, or "null" if there is no winner.
+   */
   private checkWinner = (board: Array<Array<string>>): string | null => {
     let win: string | null = null;
     WINNING_PATTERNS.forEach(([a, b, c]) => {
@@ -63,6 +77,11 @@ export class AI {
     return null;
   };
 
+  /**
+   * Selects the next move for the AI.
+   * @param board - Game board.
+   * @returns The coordinates of the selected cell [row, column].
+   */
   public selectNextPlay(board: Array<Array<string>>): number[] {
     const result = this.minimax(board, true);
     return result.move;

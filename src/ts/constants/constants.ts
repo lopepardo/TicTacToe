@@ -1,4 +1,7 @@
-export const WINNING_PATTERNS = [
+/**
+ * Represents the possible winning combinations in the game.
+ */
+export const WINNING_PATTERNS: Array<Array<number>> = [
   // Rows
   [0, 1, 2],
   [3, 4, 5],

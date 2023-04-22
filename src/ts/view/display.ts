@@ -4,7 +4,15 @@ import { IDisplay } from "../interfaces/IDisplay";
 // Utils
 import { DOMUtils } from "../utils/DOM";
 
+/**
+ * Class that handles the visual representation of the game.
+ */
 export class Display implements IDisplay {
+  /**
+   * Print the board on the screen
+   * @param boardData - Board data.
+   * @param currentPlayer - Symbol of the current player.
+   */
   public printBoard = (
     boardData: Array<Array<string>>,
     currentPlayer: string
@@ -48,6 +56,12 @@ export class Display implements IDisplay {
     );
   };
 
+  /**
+   * Update the board with the symbol of the current player in the indicated cell.
+   * @param row - Index of the row.
+   * @param col - Index of the column.
+   * @param currentPlayer - Current player's symbol.
+   */
   public updateBoard = (
     row: number,
     col: number,
@@ -66,6 +80,10 @@ export class Display implements IDisplay {
     boardRow.append(playerCell);
   };
 
+  /**
+   * Clear the board to start a new game.
+   * @param currentPlayer - Current player's symbol.
+   */
   public clearBoard = (currentPlayer: string): void => {
     const turn = DOMUtils.getElement("#turn");
     turn.textContent = currentPlayer;
@@ -76,6 +94,10 @@ export class Display implements IDisplay {
     });
   };
 
+  /**
+   * Prints the score of each player on the screen.
+   * @param scoreData - Scoring of each player.
+   */
   public printScoreBoard = (scoreData: IScore): void => {
     const scoreBoard = DOMUtils.createElement("div", "game_score");
 
@@ -100,12 +122,21 @@ export class Display implements IDisplay {
     DOMUtils.getElement("#game").append(scoreBoard);
   };
 
+  /**
+   * Updates a player's score on the screen.
+   * @param currentScore - Current score of each player.
+   * @param currentPlayer - Current player's symbol.
+   */
   public updateScore = (currentScore: IScore, currentPlayer: string): void => {
     const currentPlayerScore = DOMUtils.getElement(`#score-${currentPlayer}`);
     const score = currentScore[currentPlayer];
     currentPlayerScore.textContent = `${score}`;
   };
 
+  /**
+   * Prints the end of game message on the screen.
+   * @param winner - Winning player symbol.
+   */
   public printGameOver = (winner: string): void => {
     const gameOver = DOMUtils.createElement("div", "overlay");
     const title = DOMUtils.createElement("h1", "overlay_title");
@@ -122,11 +153,18 @@ export class Display implements IDisplay {
     DOMUtils.getElement("#game").append(gameOver);
   };
 
+  /**
+   * Clears the end of game message from the screen.
+   */
   public cleanGameOver = (): void => {
     const gameOver = DOMUtils.getElement(".overlay");
     gameOver.remove();
   };
 
+  /**
+   * Assigns an event handler to the "multiplayer" button.
+   * @param clickHandler - Function that handles the button click event.
+   */
   public bindHandlerToggle = (
     clickHandler: (checked: boolean) => void
   ): void => {
@@ -138,11 +176,19 @@ export class Display implements IDisplay {
     });
   };
 
+  /**
+   * Disable the "multiplayer" button.
+   * @param checked - Boolean value indicating whether the button is enabled or disabled.
+   */
   public disableToggle(checked: boolean) {
     const toggle = <HTMLInputElement>DOMUtils.getElement("#isMultiplayer");
     toggle.disabled = checked;
   }
 
+  /**
+   * Assigns an event handler to the game cells.
+   * @param clickHandler - Function that handles the click event in the cells.
+   */
   public bindHandlerClick(
     clickHandler: (row: number, col: number) => void
   ): void {
@@ -157,6 +203,11 @@ export class Display implements IDisplay {
     });
   }
 
+  /**
+   * Handle AI play.
+   * @param row - Row selected by the AI.
+   * @param col - Column selected by the AI.
+   */
   public clickHandleAI = (row: number, col: number): void => {
     const cellElements = DOMUtils.getAllElements(".col");
     const selectedCell = row * 3 + col;
