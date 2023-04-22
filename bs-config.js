@@ -1,6 +1,6 @@
 module.exports = {
   server: {
-    baseDir: "./dist",
+    baseDir: "./",
   },
   files: ["./dist/**/*"],
 };
