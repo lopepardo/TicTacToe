@@ -5,6 +5,8 @@
 
 Este proyecto es una implementación del clásico juego Tic Tac Toe, también conocido como Tres en Raya. Se puede jugar contra la máquina o la IA, así como en modo multijugador. Fue desarrollado con programación orientada a objetos y el patrón Modelo-Vista-Controlador (MVC), usando TypeScript para la lógica del juego y SCSS para el diseño de la interfaz gráfica. El juego se ejecuta directamente en el navegador y cuenta con una interfaz de usuario intuitiva, implementada mediante manipulación del DOM. El proyecto está estructurado en múltiples clases e interfaces que interactúan entre sí para gestionar correctamente el flujo del juego.
 
+Puedes acceder al juego a través de https://lopepardo.github.io/TicTacToe/
+
 ## 📋 Funcionalidades
 
 El juego implementado en este proyecto cuenta con las siguientes funcionalidades:
